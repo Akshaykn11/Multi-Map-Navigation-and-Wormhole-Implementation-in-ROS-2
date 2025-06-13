@@ -1,0 +1,19 @@
+Map Room1:
+
+Launch Gazebo:
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+Launch RViz2:
+source ~/ros2_ws/install/setup.bash
+ros2 run rviz2 rviz2
+
+Launch SLAM Toolbox
+source ~/ros2_ws/install/setup.bash
+ros2 launch slam_toolbox online_sync_launch.py
+
+Teleoperate the robot:
+source ~/ros2_ws/install/setup.bash
+ros2 run turtlebot3_teleop teleop_keyboard
+
+Save the map:
+ros2 run nav2_map_server map_saver_cli -f ~/ros2_ws/src/room1_map
