@@ -1,0 +1,1 @@
+sqlite3 ~/turtlebot3_ws/maps.db < ~/turtlebot3_ws/create_database.sql
