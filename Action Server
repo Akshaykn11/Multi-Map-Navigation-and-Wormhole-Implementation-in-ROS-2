@@ -1,0 +1,33 @@
+          // Simulate map switch (in a real setup, update map server)
+          current_map_ = goal->target_map;
+          RCLCPP_INFO(this->get_logger(), "Switched to map: %s", current_map_.c_str());
+        }
+        sqlite3_finalize(stmt);
+      }
+    }
+
+    // Navigate to the target pose
+    if (navigate_to_pose(goal->target_pose, goal->target_map)) {
+      goal_handle->succeed(result);
+    } else {
+      goal_handle->abort(result);
+    }
+  }
+
+  std::string result_code_to_string(rclcpp_action::ResultCode code) {
+    switch (code) {
+      case rclcpp_action::ResultCode::SUCCEEDED: return "SUCCEEDED";
+      case rclcpp_action::ResultCode::ABORTED: return "ABORTED";
+      case rclcpp_action::ResultCode::CANCELED: return "CANCELED";
+      default: return "UNKNOWN";
+    }
+  }
+};
+
+int main(int argc, char** argv) {
+  rclcpp::init(argc, argv);
+  auto node = std::make_shared<MultiMapNavNode>();
+  rclcpp::spin(node);
+  rclcpp::shutdown();
+  return 0;
+}
