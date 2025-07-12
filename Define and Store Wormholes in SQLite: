@@ -1,0 +1,28 @@
+-sudo apt install -y sqlite3 libsqlite3-dev
+-nano ~/turtlebot3_ws/create_database.sql
+
+
+CREATE TABLE IF NOT EXISTS maps (
+    name VARCHAR(255) PRIMARY KEY,
+    file_path VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS wormholes (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    map1_name VARCHAR(255),
+    map2_name VARCHAR(255),
+    pos1_x FLOAT NOT NULL,
+    pos1_y FLOAT NOT NULL,
+    pos2_x FLOAT NOT NULL,
+    pos2_y FLOAT NOT NULL,
+    radius FLOAT NOT NULL,
+    FOREIGN KEY (map1_name) REFERENCES maps(name),
+    FOREIGN KEY (map2_name) REFERENCES maps(name)
+);
+
+INSERT OR IGNORE INTO maps (name, file_path) VALUES ('room1', '/home/user/turtlebot3_ws/room1.yaml');
+INSERT OR IGNORE INTO maps (name, file_path) VALUES ('room2', '/home/user/turtlebot3_ws/room2.yaml');
+
+INSERT OR IGNORE INTO wormholes (id, name, map1_name, map2_name, pos1_x, pos1_y, pos2_x, pos2_y, radius)
+VALUES (1, 'wormhole1', 'room1', 'room2', 5.0, 5.0, 3.0, 4.0, 0.5);
