@@ -1,0 +1,12 @@
+-export TURTLEBOT3_MODEL=burger
+-ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+
+Start Cartographer for Room 2:
+- source ~/turtlebot3_ws/install/setup.bash
+- ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=true bag_filename:=/tmp/room2.bag
+
+Teleoperate the robot:
+- ros2 run turtlebot3_teleop teleop_keyboard
+
+Save Room 2 Map: Save the map as room2.yaml and room2.pgm.
+- ros2 run nav2_map_server map_saver_cli -f ~/turtlebot3_ws/room2
