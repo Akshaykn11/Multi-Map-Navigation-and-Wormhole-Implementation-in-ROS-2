@@ -6,7 +6,7 @@ This ROS 2 Humble package, developed for the ANSCER Robotics assignment, impleme
 - **Separate Room Mapping**: Each room is mapped individually using TurtleBot3 simulation and Nav2's SLAM capabilities.
 - **Wormhole Mechanism**: Overlapping regions (wormholes) enable seamless map transitions, with positions stored in an SQLite database.
 - **C++ Action Server**: A modular action server handles navigation goals, directing the robot to navigate within the same map or through wormholes to a target map.
-- **Documentation**: Clear pseudocode and modular design for easy integration and future enhancements.
+
 
 The package is built for ROS 2 Humble on Ubuntu 22.04 LTS, using TurtleBot3 for simulation and Nav2 for navigation.
 
@@ -161,20 +161,6 @@ multi_map_navigation/
 └── README.md
 ```
 
-## Additional Notes
-- **Modularity**: The `NavigationServer` class uses OOP principles, with separate header/source potential for extension. Topics and paths are configurable via parameters (though hardcoded for simplicity in this version).
-- **Documentation**: Code includes comments, and this README provides setup and usage details.
-- **Testing**: Use `simplescreenrecorder` to record simulation and navigation demos:
-  ```bash
-  sudo apt install -y simplescreenrecorder
-  simplescreenrecorder
-  ```
-- **Submission**: Package the project:
-  ```bash
-  cd ~/RobotMovement
-  tar -czvf multi_map_navigation.tar.gz src/multi_map_navigation
-  ```
-  Submit the `.tar.gz` and video via the provided form.
 
 ## References
 - [ROS 2 Humble Documentation](https://docs.ros.org/en/humble/)
