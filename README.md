@@ -45,7 +45,7 @@ rosdep install --from-paths src --ignore-src -r -y
 
 3. **Set Up the SQLite Database**:
    - The node automatically creates a `wormholes.db` file in the workspace root (`~/turtlebot3_ws`) upon first execution.
-   - Populate the database with wormhole positions using SQL commands (see [Database Schema](#database-schema)).
+   - Populate the database with wormhole positions using SQL commands 
 
 4. **Prepare Map Files**:
    - Create separate maps for each room using a mapping tool like `slam_toolbox` or `cartographer`.
@@ -212,7 +212,7 @@ multi_map_nav/
    - Identify overlapping regions between rooms and insert their poses into `wormholes.db`.
 
 3. **Run Tests**:
-   - Launch the simulation, navigation stack, and node as described in [Usage](#usage).
+   - Launch the simulation, navigation stack, and node as described in
    - Test same-map navigation:
      ```bash
      ros2 action send_goal /multi_map_navigate_to_pose multi_map_nav/action/MultiMapNavigateToPose \
